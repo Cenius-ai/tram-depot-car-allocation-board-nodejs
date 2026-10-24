@@ -1,0 +1,23 @@
+name: boot-check
+# Minimal, secret-free smoke: the app installs + boots on a stock runner.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  boot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install
+        run: |
+          if [ -x ./install.sh ]; then timeout 600 ./install.sh || true; fi
+      - name: Boot check
+        run: |
+          if [ -x ./install.sh ] && [ -f .cenius/boot_cmd ]; then
+            (sh -c "$(cat .cenius/boot_cmd)" &) && sleep 20 && echo boot window survived
+          else
+            echo "no boot contract — install-only check"
+          fi

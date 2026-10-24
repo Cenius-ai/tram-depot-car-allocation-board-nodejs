@@ -1,0 +1,21 @@
+{
+  "name": "tram-depot-car-allocation-board",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Tram depot dispatch board: car-to-route allocations per shift, siding track positions and pantograph wear inspection notices.",
+  "main": "main.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/smoke.mjs"
+  },
+  "keywords": [
+    "tram",
+    "depot",
+    "dispatch",
+    "allocation"
+  ],
+  "license": "UNLICENSED"
+}
